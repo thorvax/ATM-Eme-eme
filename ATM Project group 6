@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int pin = 1234;
+    int enteredPin, transaction, amount;
+    int balance = 100;
+    bool loggedIn = false;
+
+
+
+    while(enteredPin != 1234) {//Loop infinitely
+        cout << "Enter your 4-digit pincode:\n ";
+        cin >> enteredPin;
+
+        if (enteredPin == pin) {
+            loggedIn = true;
+            cout << "\nWelcome to ATM\n";
+             // ATM Menu Loop
+        while (loggedIn) {
+            cout << "\nSelect Transaction\n\n";
+            cout << "1. Withdraw\n";
+            cout << "2. Deposit\n";
+            cout << "3. Inquire Balance\n";
+            cout << "4. Logoff\n";
+            cout << "\nEnter Transaction: ";
+            cin >> transaction;
+
+            switch (transaction) {
+            case 1: // Withdraw
+                cout << "\nEnter amount to withdraw: \n";
+                cin >> amount;
+                if (amount <= balance) {
+                    balance -= amount;
+                    cout << "\nTransaction Successful\n";
+                    cout << "\nReceipt:\n";
+                    cout << "=====================================\n";
+                    cout << "Transaction: Withdrawal\n";
+                    cout << "Amount: " << amount << "\n";
+                    cout << "Remaining Balance: " << balance << "\n";
+                    cout << "=====================================\n";
+                } else {
+                    cout << "\nTransaction Failed! \nYou don't have enough balance\n";
+                }
+                break;
+
+            case 2: // Deposit
+                cout << "\nEnter amount to deposit: \n";
+                cin >> amount;
+                balance += amount;
+                cout << "Transaction Successful\n";
+                cout << "Receipt:\n";
+                cout << "=====================================\n";
+                cout << "Transaction: Deposit\n";
+                cout << "Amount: " << amount << "\n";
+                cout << "Remaining Balance: " << balance << "\n";
+                cout << "=====================================\n";
+                break;
+
+            case 3: // Inquire Balance
+                cout << "\nReceipt:\n";
+                cout << "=====================================\n";
+                cout << "Transaction: Inquire Balance\n";
+                cout << "Remaining Balance: " << balance << "\n";
+                cout << "=====================================\n";
+                break;
+
+            case 4: // Logoff
+                cout << "\nLogged out\n";
+                loggedIn = false;
+                break;
+
+            default:
+                cout << "Invalid transaction. Please try again.\n";
+            }
+        }
+        } else {
+            cout << "\nWrong pin code\n\n" ;
+            
+        }
+
+       
+    }
+    return 0;
+}
