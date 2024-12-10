@@ -49,7 +49,7 @@ int main() {
                 cin >> amount;
                 balance += amount;
                 cout << "Transaction Successful\n";
-                cout << "Receipt:\n";
+                cout << "\nReceipt:\n";
                 cout << "=====================================\n";
                 cout << "Transaction: Deposit\n";
                 cout << "Amount: " << amount << "\n";
