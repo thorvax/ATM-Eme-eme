@@ -8,7 +8,7 @@ int main() {
     int enteredPin, transaction, amount;
     int balance = 100;
     bool loggedIn = false;
-    string enterToContinue;
+    string enterToContinue; ; \\ empty variable para para sa click to continue…
 
 
 
@@ -19,7 +19,7 @@ int main() {
 
         if (enteredPin == pin) {
             loggedIn = true;
-            cout << "\033[2J\033[H";
+            cout << "\033[2J\033[H"; \\ to ano move the terminal screen
             cout << "\nWelcome to ATM\n";
              // ATM Menu Loop
         while (loggedIn) {
@@ -46,9 +46,9 @@ int main() {
                     cout << "Remaining Balance: " << balance << "\n";
                     cout << "=====================================\n";
                     cout << "\nPress enter to continue...";
-                    cin.ignore();
-                    getline(cin, enterToContinue);
-                    cout << "\033[2J\033[H";
+                    cin.ignore(); \\ para gumana ang getline
+                    getline(cin, enterToContinue); \\ para pag enter move na
+                    cout << "\033[2J\033[H"; \\ to ano move the terminal screen
                 } else if (amount < 500 && amount <= balance){
                     cout << "\nTransaction failed \nMinimun withdrawal amount is: 500 ";
                     cout << "\n\nPress enter to continue...";
