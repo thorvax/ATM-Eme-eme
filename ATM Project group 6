@@ -106,7 +106,7 @@ int main() {
                 loggedIn = false;
                 break;
 
-            default:
+            default: // If the number entered is wrong
                 cout << "\033[2J\033[H";
                 cout << "Invalid transaction. Please try again.\n";
                 cout << "\nPress enter to continue...";
@@ -115,7 +115,7 @@ int main() {
                     cout << "\033[2J\033[H";
             }
         }
-        } else {
+        } else { // if the pin code is wrong
             cout << "\nWrong pin code\n\n" ;
             cout << "\nPress enter to continue...";
                     cin.ignore();
