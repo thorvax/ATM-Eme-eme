@@ -1,11 +1,14 @@
 #include <iostream>
+#include <string>
 using namespace std;
+
 
 int main() {
     int pin = 1234;
     int enteredPin, transaction, amount;
     int balance = 100;
     bool loggedIn = false;
+    string enterToContinue;
 
 
 
@@ -15,6 +18,7 @@ int main() {
 
         if (enteredPin == pin) {
             loggedIn = true;
+            cout << "\033[2J\033[H";
             cout << "\nWelcome to ATM\n";
              // ATM Menu Loop
         while (loggedIn) {
@@ -28,9 +32,10 @@ int main() {
 
             switch (transaction) {
             case 1: // Withdraw
+                cout << "\033[2J\033[H";
                 cout << "\nEnter amount to withdraw: \n";
                 cin >> amount;
-                if (amount <= balance) {
+                if (amount <= balance && amount >= 500) {
                     balance -= amount;
                     cout << "\nTransaction Successful\n";
                     cout << "\nReceipt:\n";
@@ -39,39 +44,74 @@ int main() {
                     cout << "Amount: " << amount << "\n";
                     cout << "Remaining Balance: " << balance << "\n";
                     cout << "=====================================\n";
+                    cout << "\nPress enter to continue...";
+                    cin.ignore();
+                    getline(cin, enterToContinue);
+                    cout << "\033[2J\033[H";
+                } else if (amount < 500){
+                    cout << "\nTransaction failed \nMinimun withdrawal amount is: 500 ";
+                    cout << "\n\nPress enter to continue...";
+                    cin.ignore();
+                    getline(cin, enterToContinue);
+                    cout << "\033[2J\033[H";
+
                 } else {
+                    cout << "\033[2J\033[H";
                     cout << "\nTransaction Failed! \nYou don't have enough balance\n";
+                    cout << "\nPress enter to continue...";
+                    cin.ignore();
+                    getline(cin, enterToContinue);
+                    cout << "\033[2J\033[H";
                 }
                 break;
 
             case 2: // Deposit
+                cout << "\033[2J\033[H";
                 cout << "\nEnter amount to deposit: \n";
                 cin >> amount;
                 balance += amount;
-                cout << "Transaction Successful\n";
+                cout << "\nTransaction Successful\n";
                 cout << "\nReceipt:\n";
                 cout << "=====================================\n";
                 cout << "Transaction: Deposit\n";
                 cout << "Amount: " << amount << "\n";
                 cout << "Remaining Balance: " << balance << "\n";
                 cout << "=====================================\n";
+                cout << "\nPress enter to continue...";
+                    cin.ignore();
+                    getline(cin, enterToContinue);
+                    cout << "\033[2J\033[H";
                 break;
 
             case 3: // Inquire Balance
+                cout << "\033[2J\033[H";
                 cout << "\nReceipt:\n";
                 cout << "=====================================\n";
                 cout << "Transaction: Inquire Balance\n";
                 cout << "Remaining Balance: " << balance << "\n";
                 cout << "=====================================\n";
+                cout << "\nPress enter to continue...";
+                    cin.ignore();
+                    getline(cin, enterToContinue);
+                    cout << "\033[2J\033[H";
                 break;
 
             case 4: // Logoff
+                cout << "\033[2J\033[H";
                 cout << "\nLogged out\n";
+                cout << "Press enter to continue...";
+                cin.ignore();
+                getline(cin, enterToContinue);
                 loggedIn = false;
                 break;
 
             default:
+                cout << "\033[2J\033[H";
                 cout << "Invalid transaction. Please try again.\n";
+                cout << "\nPress enter to continue...";
+                    cin.ignore();
+                    getline(cin, enterToContinue);
+                    cout << "\033[2J\033[H";
             }
         }
         } else {
